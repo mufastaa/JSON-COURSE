@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <ul id="people"></ul>
+    <script>
+        
+        var person ={
+            name: "mufastaa",
+            age: 20,
+            address:{
+                street:"kk7 st",
+                city:"kicukiro" 
+            },
+            children:["dave", "bandana"]
+            
+        }
+        //person = JSON.stringify(person);
+        // person = JSON.parse(person);
+
+        var people = 
+            [{
+
+           
+                name:"mufastaa",
+                age:20
+            },
+            {
+                name:"tune",
+                age:25
+            },
+            {
+                name:"mike",
+                age:21
+            },
+            ];
+        
+
+        //console.log(people[1].age);
+        var output = "";
+        for (var i = 0;1 < people.length;i++){
+           // console.log(people[i].name);
+         output += '<li>'+people[i].name+'</li>';
+
+        }
+        document.getElementById('people').innerHTML = output;
+
+
+     
+     
+
+     var xhttp = new XMLHttpRequest();
+     xhttp.onreadystatechange = function() {
+       if (this.readyState == 4 && this.status == 200) {
+           var response =JSON.parse(xhttp.responseText);
+           var people = response.people;
+          
+          var output = "";
+          for (var i = 0;1 < people.length;i++){
+           
+          output += '<li>'+people[i].name+'</li>';
+
+        }
+        document.getElementById('people').innerHTML = output;
+
+        }
+     };
+         xhttp.open("GET", "people.json", true);
+        xhttp.send();
+    </script>
+    
+</body>
+</html>
